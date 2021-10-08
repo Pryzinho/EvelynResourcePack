@@ -6,25 +6,48 @@ EvelynResourcePack:
   Delay: 1 #second
   URL-Link: "your-resourcepack-url"
 
-  Messages:
-    Enable: true
-    Success:
-      - "&b&m                                                          &b"
-      - ""
-      - "              &6&lEvelynResourcePack"
-      - "     &eSuccess Downloading ResourcePack!"
-      - ""
-      - "&b&m                                                          &b"
+  Title:
     Accept:
-      - "&b&m                                                          &b"
-      - ""
-      - "              &6&lEvelynResourcePack"
-      - "     &eAccept Downloading ResourcePack!"
-      - ""
-      - "&b&m                                                          &b"
+      Title: "&6&lEvelynResourcePack"
+      SubTitle: "&eAccept Downloading ResourcePack!"
+      FadeIn: 5
+      Stay: 5
+      FadeOut: 5
+      Enable: true
+
+    Success:
+      Title: "&6&lEvelynResourcePack"
+      SubTitle: "&eSuccess Downloading ResourcePack!"
+      FadeIn: 5
+      Stay: 5
+      FadeOut: 5
+      Enable: true
+
+  Messages:
+    Success:
+      Messages:
+        - "&b&m                                                          &b"
+        - ""
+        - "              &6&lEvelynResourcePack"
+        - "     &eSuccess Downloading ResourcePack!"
+        - ""
+        - "&b&m                                                          &b"
+      Enable: true
+
+    Accept:
+      Messages:
+        - "&b&m                                                          &b"
+        - ""
+        - "              &6&lEvelynResourcePack"
+        - "     &eAccept Downloading ResourcePack!"
+        - ""
+        - "&b&m                                                          &b"
+      Enable: true
 
   Kick:
-    Enable: true
-    Declined: "&6&lEvelynResourcePack\n&ePlease accept resourcepack!\n &eor enable resourcepack!"
-    Failed: "&6&lEvelynResourcePack\n&eFailed download resourcepack!"
-
+    Declined:
+      Messages: "&6&lEvelynResourcePack\n&ePlease accept resourcepack!\n &eor enable resourcepack!"
+      Enable: true
+    Failed:
+      Messages: "&6&lEvelynResourcePack\n&eFailed download resourcepack!"
+      Enable: true

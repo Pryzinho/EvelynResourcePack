@@ -12,6 +12,7 @@ public class Main extends JavaPlugin implements Listener {
     public static Main getPlugins() {
         return JavaPlugin.getPlugin(Main.class);
     }
+
     public void onEnable() {
         this.saveDefaultConfig ();
         this.getServer ().getPluginManager ().registerEvents ( new ResourcePack (), this );
