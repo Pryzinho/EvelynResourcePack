@@ -1,0 +1,10 @@
+name: EvelynResourcePack
+version: 1.1
+main: com.josemarcellio.evelynresourcepack.Main
+authors: [JoseMarcellio]
+description: a lightweight resource pack downloader plugin!
+commands:
+  pack:
+    aliases: [evelynpack, epack]
+  resourcepack:
+    aliases: [evelynresourcepack, eresourcepack]
