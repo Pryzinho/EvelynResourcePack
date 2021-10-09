@@ -6,20 +6,55 @@ EvelynResourcePack:
   Delay: 1 #second
   URL-Link: "your-resourcepack-url"
 
+  Sound:
+    Accept:
+      Sound: "LEVEL_UP"
+      Volume: 1
+      Pitch: 1
+      Enable: true
+    Success:
+      Sound: "LAVA_POP"
+      Volume: 1
+      Pitch: 1
+      Enable: true
+    Failed:
+      Sound: "VILLAGER_NO"
+      Volume: 1
+      Pitch: 1
+      Enable: true
+    Declined:
+      Sound: "ANVIL_BREAK"
+      Volume: 1
+      Pitch: 1
+      Enable: true
+
   Title:
     Accept:
       Title: "&6&lEvelynResourcePack"
       SubTitle: "&eAccept Downloading ResourcePack!"
       FadeIn: 5
-      Stay: 5
+      Stay: 40
       FadeOut: 5
       Enable: true
-
     Success:
       Title: "&6&lEvelynResourcePack"
       SubTitle: "&eSuccess Downloading ResourcePack!"
       FadeIn: 5
-      Stay: 5
+      Stay: 40
+      FadeOut: 5
+      Enable: true
+    Failed:
+      Title: "&6&lEvelynResourcePack"
+      SubTitle: "&eFailed Downloading ResourcePack!"
+      FadeIn: 5
+      Stay: 40
+      FadeOut: 5
+      Enable: true
+    Declined:
+      Title: "&6&lEvelynResourcePack"
+      SubTitle: "&eYou Declined ResourcePack!"
+      FadeIn: 5
+      Stay: 40
       FadeOut: 5
       Enable: true
 
@@ -33,7 +68,6 @@ EvelynResourcePack:
         - ""
         - "&b&m                                                          &b"
       Enable: true
-
     Accept:
       Messages:
         - "&b&m                                                          &b"

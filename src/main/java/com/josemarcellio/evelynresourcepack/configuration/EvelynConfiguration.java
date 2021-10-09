@@ -2,6 +2,7 @@ package com.josemarcellio.evelynresourcepack.configuration;
 
 import com.josemarcellio.evelynresourcepack.Main;
 import com.josemarcellio.evelynresourcepack.utils.Titles;
+import com.josemarcellio.evelynresourcepack.utils.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -52,19 +53,25 @@ public class EvelynConfiguration {
 
     public static void acceptdelay(Player p) {
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Messages.Accept.Enable" )) {
-            accept(p);
+            accept ( p );
         }
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Title.Accept.Enable" )) {
             accepttitle ( p );
+        }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Sound.Accept.Enable" )) {
+            acceptsound ( p );
         }
     }
 
     public static void successdelay(Player p) {
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Messages.Success.Enable" )) {
-            success(p);
+            success ( p );
         }
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Title.Success.Enable" )) {
             successtitle ( p );
+        }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Sound.Success.Enable" )) {
+            successsound ( p );
         }
     }
 
@@ -72,27 +79,64 @@ public class EvelynConfiguration {
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Kick.Declined.Enable" )) {
             Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declined ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
         }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Title.Declined.Enable" )) {
+            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declinedtitle ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
+        }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Sound.Declined.Enable" )) {
+            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declinedsound ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
+        }
     }
 
     public static void faileddelay(Player p) {
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Kick.Failed.Enable" )) {
             Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failed ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
         }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Title.Failed.Enable" )) {
+            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failedtitle ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
+        }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Sound.Failed.Enable" )) {
+            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failedsound ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
+        }
     }
 
     public static void joinbypass(Player p) {
         if (p.hasPermission ( "evelyn.bypass" )) {
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> bypass ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ));
+            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> bypass ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
         } else {
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> send ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ));
+            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> send ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
         }
     }
 
     public static void accepttitle(Player p) {
-        Titles.sendTitle(p,Main.getPlugins().getConfig().getString("EvelynResourcePack.Title.Accept.Title"),Main.getPlugins().getConfig().getString("EvelynResourcePack.Title.Accept.SubTitle") , Main.getPlugins().getConfig().getInt("EvelynResourcePack.Title.Accept.FadeIn"),Main.getPlugins().getConfig().getInt("EvelynResourcePack.Title.Accept.Stay"),Main.getPlugins().getConfig().getInt("EvelynResourcePack.Title.Accept.FadeOut"));
+        Titles.sendTitle ( p, Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Accept.Title" ), Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Accept.SubTitle" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Accept.FadeIn" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Accept.Stay" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Accept.FadeOut" ) );
     }
 
     public static void successtitle(Player p) {
-        Titles.sendTitle(p,Main.getPlugins().getConfig().getString("EvelynResourcePack.Title.Success.Title"),Main.getPlugins().getConfig().getString("EvelynResourcePack.Title.Success.SubTitle") , Main.getPlugins().getConfig().getInt("EvelynResourcePack.Title.Success.FadeIn"),Main.getPlugins().getConfig().getInt("EvelynResourcePack.Title.Success.Stay"),Main.getPlugins().getConfig().getInt("EvelynResourcePack.Title.Success.FadeOut"));
+        Titles.sendTitle ( p, Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Success.Title" ), Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Success.SubTitle" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Success.FadeIn" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Success.Stay" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Success.FadeOut" ) );
     }
+
+    public static void declinedtitle(Player p) {
+        Titles.sendTitle ( p, Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Declined.Title" ), Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Declined.SubTitle" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Declined.FadeIn" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Declined.Stay" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Declined.FadeOut" ) );
+    }
+
+    public static void failedtitle(Player p) {
+        Titles.sendTitle ( p, Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Failed.Title" ), Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Title.Failed.SubTitle" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Failed.FadeIn" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Failed.Stay" ), Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Title.Failed.FadeOut" ) );
+    }
+
+    public static void acceptsound(Player p) {
+        p.playSound(p.getLocation(), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Sound.Accept.Sound" ) ) ).get ().parseSound () ), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Accept.Volume"), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Accept.Pitch"));
+    }
+
+    public static void successsound(Player p) {
+        p.playSound(p.getLocation(), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Sound.Success.Sound" ) ) ).get ().parseSound () ), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Success.Volume"), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Success.Pitch"));
+    }
+
+    public static void failedsound(Player p) {
+        p.playSound(p.getLocation(), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Sound.Failed.Sound" ) ) ).get ().parseSound () ), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Failed.Volume"), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Failed.Pitch"));
+    }
+
+    public static void declinedsound(Player p) {
+        p.playSound(p.getLocation(), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Sound.Declined.Sound" ) ) ).get ().parseSound () ), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Declined.Volume"), Main.getPlugins ().getConfig ().getInt("EvelynResourcePack.Sound.Declined.Pitch"));
+    }
+
 }
