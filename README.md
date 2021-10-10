@@ -11,6 +11,6 @@ https://www.spigotmc.org/resources/evelynresourcepack.96687/
 
 ## Credits
 
-#####Contributors:
+##### Contributors:
 >- JoseMarcellio (Author)
 >- CryptoMorin (XSeries)
