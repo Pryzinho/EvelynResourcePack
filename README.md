@@ -4,6 +4,4 @@ https://www.spigotmc.org/resources/evelynresourcepack.96687/
 Give credit if you use this source code!
 
 Contributors:
-CryptoMorin,
-sgdc3,
-NickUltracraft
+CryptoMorin
