@@ -1,8 +1,13 @@
 name: EvelynResourcePack
-version: 1.3
+version: 1.4
 main: com.josemarcellio.evelynresourcepack.Main
 authors: [JoseMarcellio]
 description: a lightweight resource pack downloader plugin!
+load: POSTWORLD
+softdepend:
+  - AuthMe
+  - nLogin
+  - OpeNLogin
 commands:
   pack:
     aliases: [evelynpack, epack]

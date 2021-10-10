@@ -21,7 +21,7 @@ public class ResourcePack implements Listener {
             EvelynConfiguration.declineddelay (p);
         }
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD)) {
-            EvelynConfiguration.faileddelay ( p );
+            EvelynConfiguration.faileddelay (p);
         }
     }
 }
