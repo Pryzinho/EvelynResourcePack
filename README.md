@@ -1,6 +1,5 @@
-# EvelynResourcePack by JoseMarcellio
+# EvelynResourcePack - ResourcePack Downloader
 https://www.spigotmc.org/resources/evelynresourcepack.96687/
-
 
 ##### Running requirements:
 >- Java 8-16
@@ -13,5 +12,4 @@ https://www.spigotmc.org/resources/evelynresourcepack.96687/
 
 ##### Contributors:
 
-##### JoseMarcellio (Author)
-##### CryptoMorin (XSeries)
+##### JoseMarcellio (Author), CryptoMorin (XSeries)
