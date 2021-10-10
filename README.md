@@ -1,4 +1,4 @@
-# EvelynResourcePack - ResourcePack Downloader
+# EvelynResourcePack - ResourcePack Downloader by JoseMarcellio
 https://www.spigotmc.org/resources/evelynresourcepack.96687/
 
 ##### Running requirements:
@@ -7,9 +7,3 @@ https://www.spigotmc.org/resources/evelynresourcepack.96687/
 >- AuthMe (optional)
 >- OpeNLogin (optional)
 >- nLogin (optional)
-
-## Credits
-
-##### Contributors:
-
-##### JoseMarcellio (Author), CryptoMorin (XSeries)
