@@ -1,13 +1,12 @@
 package com.josemarcellio.evelynresourcepack.configuration;
 
 import com.josemarcellio.evelynresourcepack.Main;
-import com.josemarcellio.evelynresourcepack.utils.ActionBar;
-import com.josemarcellio.evelynresourcepack.utils.Titles;
-import com.josemarcellio.evelynresourcepack.utils.XSound;
+import com.josemarcellio.evelynresourcepack.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,6 +78,20 @@ public class EvelynConfiguration {
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.ActionBar.Accept.Enable" )) {
             acceptbar ( p );
         }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Discord-Webhook.Accept.Enable" )) {
+            DiscordEmbed embed = new DiscordEmbed ()
+                    .setTitle(Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.Accept.Title"))
+                    .setColor( Color.cyan)
+                    .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Accept.Description" ) ).replaceAll("%player%", p.getName()));
+            DiscordAuthor author = new DiscordAuthor (
+                    ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Accept.Author" ) ).replaceAll("%player%", p.getName())),
+                    Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Accept.Profile" ) ).replaceAll("%player%", p.getName()));
+            try {
+                DiscordSender.sendEmbed(embed, Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+            } catch (Exception exception) {
+                exception.printStackTrace ();
+            }
+        }
     }
 
     public static void successdelay(Player p) {
@@ -93,6 +106,20 @@ public class EvelynConfiguration {
         }
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.ActionBar.Success.Enable" )) {
             successbar ( p );
+        }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Discord-Webhook.Success.Enable" )) {
+            DiscordEmbed embed = new DiscordEmbed ()
+                    .setTitle(Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.Success.Title"))
+                    .setColor( Color.cyan)
+                    .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Success.Description" ) ).replaceAll("%player%", p.getName()));
+            DiscordAuthor author = new DiscordAuthor (
+                    ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Success.Author" ) ).replaceAll("%player%", p.getName())),
+                    Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Success.Profile" ) ).replaceAll("%player%", p.getName()));
+            try {
+                DiscordSender.sendEmbed(embed, Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+            } catch (Exception exception) {
+                exception.printStackTrace ();
+            }
         }
     }
 
@@ -112,6 +139,20 @@ public class EvelynConfiguration {
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.ActionBar.Declined.Enable" )) {
             Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declinedbar ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
         }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Discord-Webhook.Declined.Enable" )) {
+            DiscordEmbed embed = new DiscordEmbed ()
+                    .setTitle(Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.Declined.Title"))
+                    .setColor(Color.cyan)
+                    .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Declined.Description" ) ).replaceAll("%player%", p.getName()));
+            DiscordAuthor author = new DiscordAuthor (
+                    ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Declined.Author" ) ).replaceAll("%player%", p.getName())),
+                    Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Declined.Profile" ) ).replaceAll("%player%", p.getName()));
+            try {
+                DiscordSender.sendEmbed(embed, Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+            } catch (Exception exception) {
+                exception.printStackTrace ();
+            }
+        }
     }
 
     public static void faileddelay(Player p) {
@@ -129,6 +170,20 @@ public class EvelynConfiguration {
         }
         if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.ActionBar.Failed.Enable" )) {
             Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failedbar ( p ), 20L * Main.getPlugins ().getConfig ().getInt ( "EvelynResourcePack.Delay" ) );
+        }
+        if (Main.getPlugins ().getConfig ().getBoolean ( "EvelynResourcePack.Discord-Webhook.Failed.Enable" )) {
+            DiscordEmbed embed = new DiscordEmbed ()
+                    .setTitle(Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.Failed.Title"))
+                    .setColor( Color.cyan)
+                    .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Failed.Description" ) ).replaceAll("%player%", p.getName()));
+            DiscordAuthor author = new DiscordAuthor (
+                    ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Failed.Author" ) ).replaceAll("%player%", p.getName())),
+                    Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Failed.Profile" ) ).replaceAll("%player%", p.getName()));
+            try {
+                DiscordSender.sendEmbed(embed, Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+            } catch (Exception exception) {
+                exception.printStackTrace ();
+            }
         }
     }
 

@@ -8,6 +8,7 @@ import com.josemarcellio.evelynresourcepack.hook.OpeNLoginListener;
 import com.josemarcellio.evelynresourcepack.hook.nLoginListener;
 import com.josemarcellio.evelynresourcepack.listener.PlayerJoin;
 import com.josemarcellio.evelynresourcepack.listener.ResourcePack;
+import java.util.Objects;
 
 public class EvelynManager {
 
@@ -27,9 +28,8 @@ public class EvelynManager {
             Main.getPlugins().getLogger ().info("No Login Plugins Found!, Use Default System!");
         }
     }
-
     public static void Command() {
-        Main.getPlugins().getCommand( "pack" ).setExecutor ( new ResourcePackCommand () );
-        Main.getPlugins().getCommand( "resourcepack" ).setExecutor ( new MainCommand () );
+        Objects.requireNonNull ( Main.getPlugins ().getCommand ( "pack" ) ).setExecutor ( new ResourcePackCommand () );
+        Objects.requireNonNull ( Main.getPlugins ().getCommand ( "resourcepack" ) ).setExecutor ( new MainCommand () );
     }
 }

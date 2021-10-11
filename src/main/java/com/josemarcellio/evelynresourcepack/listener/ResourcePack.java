@@ -7,7 +7,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerResourcePackStatusEvent;
 
 public class ResourcePack implements Listener {
-
     @EventHandler
     public void resourcepack(final PlayerResourcePackStatusEvent e) {
         final Player p = e.getPlayer();
