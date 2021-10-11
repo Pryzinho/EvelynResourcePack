@@ -1,4 +1,4 @@
-# EvelynResourcePack - ResourcePack Downloader by JoseMarcellio
+# EvelynResourcePack - ResourcePack Downloader by JoseMarcellio 1.4
 https://www.spigotmc.org/resources/evelynresourcepack.96687/
 
 ##### Running requirements:
