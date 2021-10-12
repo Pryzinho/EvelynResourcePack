@@ -11,16 +11,16 @@ public class ResourcePack implements Listener {
     public void resourcepack(final PlayerResourcePackStatusEvent e) {
         final Player p = e.getPlayer();
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.ACCEPTED)) {
-            EvelynConfiguration.acceptdelay (p);
+            new EvelynConfiguration().acceptdelay (p);
         }
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED)) {
-            EvelynConfiguration.successdelay (p);
+            new EvelynConfiguration().successdelay (p);
         }
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.DECLINED)) {
-            EvelynConfiguration.declineddelay (p);
+            new EvelynConfiguration().declineddelay (p);
         }
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD)) {
-            EvelynConfiguration.faileddelay (p);
+            new EvelynConfiguration().faileddelay (p);
         }
     }
 }

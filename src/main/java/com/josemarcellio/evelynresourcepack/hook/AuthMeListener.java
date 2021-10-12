@@ -10,6 +10,6 @@ public class AuthMeListener implements Listener {
     @EventHandler
     public void onlogin(LoginEvent e) {
         Player p = e.getPlayer();
-        EvelynConfiguration.joinbypass(p);
+        new EvelynConfiguration().joinbypass(p);
     }
 }

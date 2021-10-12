@@ -11,11 +11,11 @@ public class nLoginListener implements Listener {
     @EventHandler
     public void onlogin(AsyncLoginEvent e) {
         Player p = e.getPlayer();
-        EvelynConfiguration.joinbypass(p);
+        new EvelynConfiguration().joinbypass(p);
     }
     @EventHandler
     public void onregister(AsyncRegisterEvent e) {
         Player p = e.getPlayer();
-        EvelynConfiguration.joinbypass(p);
+        new EvelynConfiguration().joinbypass(p);
     }
 }

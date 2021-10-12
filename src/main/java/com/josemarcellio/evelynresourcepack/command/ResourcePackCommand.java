@@ -12,7 +12,7 @@ public class ResourcePackCommand implements CommandExecutor
     public boolean onCommand(final @NotNull CommandSender sender, final @NotNull Command command, final @NotNull String label, final String[] args) {
         if (sender instanceof Player) {
             final Player p = (Player)sender;
-                EvelynConfiguration.send(p);
+            new EvelynConfiguration().send(p);
         }
         return false;
     }

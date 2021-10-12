@@ -12,7 +12,7 @@ public class MainCommand implements CommandExecutor
     public boolean onCommand(final @NotNull CommandSender sender , final @NotNull Command command, final @NotNull String label, final String[] args) {
         if (sender instanceof Player) {
             final Player p = (Player)sender;
-            EvelynConfiguration.main(p);
+            new EvelynConfiguration().main(p);
         }
         return false;
     }
