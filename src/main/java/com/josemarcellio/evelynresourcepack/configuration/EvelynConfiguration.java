@@ -66,11 +66,13 @@ public class EvelynConfiguration {
     }
 
     public void bypass(Player p) {
+        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
         bypassmessage ( p );
         bypassdiscord ( p );
         bypasssound ( p );
         bypasstitle ( p );
         bypassbar ( p );
+        }, 20L * file.getInt ( "EvelynResourcePack.Delay" ));
     }
 
     public void success(Player p) {
@@ -94,37 +96,45 @@ public class EvelynConfiguration {
     }
 
     public void acceptdelay(Player p) {
+        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
             accept ( p );
             accepttitle ( p );
             acceptsound ( p );
             acceptbar ( p );
             acceptdiscord(p);
+        }, 20L * file.getInt ( "EvelynResourcePack.Delay" ));
     }
 
     public void successdelay(Player p) {
+        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
             success ( p );
             successtitle ( p );
             successsound ( p );
             successbar ( p );
             successdiscord(p);
+        }, 20L * file.getInt ( "EvelynResourcePack.Delay" ));
     }
 
     public void declineddelay(Player p) {
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declined2 ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declined ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declinedtitle ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declinedsound ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> declinedbar ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            declineddiscord(p);
+        Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> {
+            declined ( p );
+            declineddiscord ( p );
+            declined2 ( p );
+            declinedtitle ( p );
+            declinedsound ( p );
+            declinedbar ( p );
+        }, 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
     }
 
     public void faileddelay(Player p) {
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failed2 ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failed ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failedtitle ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failedsound ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> failedbar ( p ), 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
-            faileddiscord(p);
+        Bukkit.getScheduler ().runTaskLater ( Main.getPlugins (), () -> {
+            failed2 ( p );
+            failed ( p );
+            failedtitle ( p );
+            failedsound ( p );
+            failedbar ( p );
+            faileddiscord ( p );
+        }, 20L * file.getInt ( "EvelynResourcePack.Delay" ) );
     }
 
     public void joinbypass(Player p) {
