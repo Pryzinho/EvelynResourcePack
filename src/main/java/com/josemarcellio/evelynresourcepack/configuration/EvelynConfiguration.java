@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import java.awt.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class EvelynConfiguration {
     final FileConfiguration file = Main.getPlugins().getConfig();
@@ -166,31 +167,36 @@ public class EvelynConfiguration {
 
     public void bypasssound(Player p) {
         if (file.getBoolean ( "EvelynResourcePack.Sound.Bypass.Enable" )) {
-            p.playSound ( p.getLocation (), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Bypass.Sound" ) ) ).get ().parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Bypass.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Bypass.Pitch" ) );
+            Optional<XSound> bypass = XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Bypass.Sound" ) ) );
+            bypass.ifPresent ( xSound -> p.playSound ( p.getLocation (), Objects.requireNonNull ( xSound.parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Bypass.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Bypass.Pitch" ) ) );
         }
     }
 
     public void acceptsound(Player p) {
         if (file.getBoolean ( "EvelynResourcePack.Sound.Accept.Enable" )) {
-            p.playSound ( p.getLocation (), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Accept.Sound" ) ) ).get ().parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Accept.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Accept.Pitch" ) );
+            Optional<XSound> accept = XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Accept.Sound" ) ) );
+            accept.ifPresent ( xSound -> p.playSound ( p.getLocation (), Objects.requireNonNull ( xSound.parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Accept.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Accept.Pitch" ) ) );
         }
     }
 
     public void successsound(Player p) {
         if (file.getBoolean ( "EvelynResourcePack.Sound.Success.Enable" )) {
-            p.playSound ( p.getLocation (), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Success.Sound" ) ) ).get ().parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Success.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Success.Pitch" ) );
+            Optional<XSound> success = XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Success.Sound" ) ) );
+            success.ifPresent ( xSound -> p.playSound ( p.getLocation (), Objects.requireNonNull ( xSound.parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Success.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Success.Pitch" ) ) );
         }
     }
 
     public void failedsound(Player p) {
         if (file.getBoolean ( "EvelynResourcePack.Sound.Failed.Enable" )) {
-            p.playSound ( p.getLocation (), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Failed.Sound" ) ) ).get ().parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Failed.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Failed.Pitch" ) );
+            Optional<XSound> failed = XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Failed.Sound" ) ) );
+            failed.ifPresent ( xSound -> p.playSound ( p.getLocation (), Objects.requireNonNull ( xSound.parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Failed.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Failed.Pitch" ) ) );
         }
     }
 
     public void declinedsound(Player p) {
         if (file.getBoolean ( "EvelynResourcePack.Sound.Declined.Enable" )) {
-            p.playSound ( p.getLocation (), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Declined.Sound" ) ) ).get ().parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Declined.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Declined.Pitch" ) );
+            Optional<XSound> declined = XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Declined.Sound" ) ) );
+            declined.ifPresent ( xSound -> p.playSound ( p.getLocation (), Objects.requireNonNull ( xSound.parseSound () ), file.getInt ( "EvelynResourcePack.Sound.Declined.Volume" ), file.getInt ( "EvelynResourcePack.Sound.Declined.Pitch" ) ) );
         }
     }
 
