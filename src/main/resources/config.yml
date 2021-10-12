@@ -13,6 +13,12 @@ EvelynResourcePack:
 
   Discord-Webhook:
     URL-Link: "your-discord-webhook-url"
+    Bypass:
+      Author: "Evelyn Webhook"
+      Profile: "https://minotar.net/helm/%player%/100.png"
+      Title: "EvelynResourcePack"
+      Description: "%player% Bypass Downloading ResourcePack!"
+      Enable: false
     Accept:
       Author: "Evelyn Webhook"
       Profile: "https://minotar.net/helm/%player%/100.png"
@@ -39,6 +45,10 @@ EvelynResourcePack:
       Enable: false
 
   ActionBar:
+    Bypass:
+      Messages: "&eBypass Downloading ResourcePack!"
+      Duration: 2 #second
+      Enable: true
     Accept:
       Messages: "&eAccept Downloading ResourcePack!"
       Duration: 2 #second
@@ -57,6 +67,11 @@ EvelynResourcePack:
       Enable: true
 
   Sound:
+    Bypass:
+      Sound: "LEVEL_UP"
+      Volume: 1
+      Pitch: 1
+      Enable: true
     Accept:
       Sound: "LEVEL_UP"
       Volume: 1
@@ -79,6 +94,13 @@ EvelynResourcePack:
       Enable: true
 
   Title:
+    Bypass:
+      Title: "&6&lEvelynResourcePack"
+      SubTitle: "&eBypass Downloading ResourcePack!"
+      FadeIn: 5 #tick
+      Stay: 40 #tick
+      FadeOut: 5 #tick
+      Enable: true
     Accept:
       Title: "&6&lEvelynResourcePack"
       SubTitle: "&eAccept Downloading ResourcePack!"
@@ -109,6 +131,15 @@ EvelynResourcePack:
       Enable: true
 
   Messages:
+    Bypass:
+      Messages:
+        - "&b&m                                                          &b"
+        - ""
+        - "              &6&lEvelynResourcePack"
+        - "     &eBypass Downloading ResourcePack!"
+        - ""
+        - "&b&m                                                          &b"
+      Enable: true
     Success:
       Messages:
         - "&b&m                                                          &b"

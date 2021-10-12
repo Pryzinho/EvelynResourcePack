@@ -17,6 +17,8 @@ public class EvelynConfiguration {
     List<String> successs = file.getStringList ( "EvelynResourcePack.Messages.Success.Messages" );
     List<String> declineds = file.getStringList ( "EvelynResourcePack.Messages.Declined.Messages" );
     List<String> faileds = file.getStringList ( "EvelynResourcePack.Messages.Failed.Messages" );
+    List<String> bypasss = file.getStringList ( "EvelynResourcePack.Messages.Bypass.Messages" );
+
     public void send(Player p) {
         p.setResourcePack ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.URL-Link" ) ) );
     }
@@ -49,7 +51,23 @@ public class EvelynConfiguration {
     }
 
     public void bypass(Player p) {
-
+        if (file.getBoolean ( "EvelynResourcePack.Messages.Bypass.Enable" )) {
+            for (String bypass : bypasss) {
+                p.sendMessage ( ChatColor.translateAlternateColorCodes ( '&', bypass ) );
+            }
+        }
+        if (file.getBoolean ( "EvelynResourcePack.Discord-Webhook.Bypass.Enable" )) {
+            bypassdiscord ( p );
+        }
+        if (file.getBoolean ( "EvelynResourcePack.Sound.Bypass.Enable" )) {
+            bypasssound ( p );
+        }
+        if (file.getBoolean ( "EvelynResourcePack.Title.Bypass.Enable" )) {
+            bypasstitle ( p );
+        }
+        if (file.getBoolean ( "EvelynResourcePack.ActionBar.Bypass.Enable" )) {
+            bypassbar ( p );
+        }
     }
 
     public void success(Player p) {
@@ -153,6 +171,10 @@ public class EvelynConfiguration {
         }
     }
 
+    public void bypasstitle(Player p) {
+        Titles.sendTitle ( p, file.getInt ( "EvelynResourcePack.Title.Bypass.FadeIn" ), file.getInt ( "EvelynResourcePack.Title.Bypass.Stay" ), file.getInt ( "EvelynResourcePack.Title.Bypass.FadeOut" ), ChatColor.translateAlternateColorCodes ( '&', Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Title.Bypass.Title" ) ) ), ChatColor.translateAlternateColorCodes ( '&', Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Title.Bypass.SubTitle" ) ) ));
+    }
+
     public void accepttitle(Player p) {
         Titles.sendTitle ( p, file.getInt ( "EvelynResourcePack.Title.Accept.FadeIn" ), file.getInt ( "EvelynResourcePack.Title.Accept.Stay" ), file.getInt ( "EvelynResourcePack.Title.Accept.FadeOut" ), ChatColor.translateAlternateColorCodes ( '&', Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Title.Accept.Title" ) ) ), ChatColor.translateAlternateColorCodes ( '&', Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Title.Accept.SubTitle" ) ) ));
     }
@@ -169,6 +191,10 @@ public class EvelynConfiguration {
         Titles.sendTitle ( p, file.getInt ( "EvelynResourcePack.Title.Failed.FadeIn" ), file.getInt ( "EvelynResourcePack.Title.Failed.Stay" ), file.getInt ( "EvelynResourcePack.Title.Failed.FadeOut" ), ChatColor.translateAlternateColorCodes ( '&', Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Title.Failed.Title" ) ) ), ChatColor.translateAlternateColorCodes ( '&', Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Title.Failed.SubTitle" ) ) ));
     }
 
+    public void bypasssound(Player p) {
+        p.playSound(p.getLocation(), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Bypass.Sound" ) ) ).get ().parseSound () ), file.getInt("EvelynResourcePack.Sound.Bypass.Volume"), file.getInt("EvelynResourcePack.Sound.Bypass.Pitch"));
+    }
+
     public void acceptsound(Player p) {
         p.playSound(p.getLocation(), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Accept.Sound" ) ) ).get ().parseSound () ), file.getInt("EvelynResourcePack.Sound.Accept.Volume"), file.getInt("EvelynResourcePack.Sound.Accept.Pitch"));
     }
@@ -183,6 +209,10 @@ public class EvelynConfiguration {
 
     public void declinedsound(Player p) {
         p.playSound(p.getLocation(), Objects.requireNonNull ( XSound.matchXSound ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.Sound.Declined.Sound" ) ) ).get ().parseSound () ), file.getInt("EvelynResourcePack.Sound.Declined.Volume"), file.getInt("EvelynResourcePack.Sound.Declined.Pitch"));
+    }
+
+    public void bypassbar(Player p) {
+        ActionBar.sendActionBar (Main.getPlugins(), p, ChatColor.translateAlternateColorCodes ( '&', Objects.requireNonNull ( file.getString ( "EvelynResourcePack.ActionBar.Bypass.Messages" ) ) ), Main.getPlugins().getConfig().getInt("EvelynResourcePack.ActionBar.Bypass.Duration") );
     }
 
     public void acceptbar(Player p) {
@@ -218,14 +248,14 @@ public class EvelynConfiguration {
 
     public void successdiscord (Player p) {
         DiscordEmbed embed = new DiscordEmbed ()
-                .setTitle(Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.Success.Title"))
+                .setTitle(file.getString("EvelynResourcePack.Discord-Webhook.Success.Title"))
                 .setColor( Color.cyan)
                 .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Success.Description" ) ).replaceAll("%player%", p.getName()));
         DiscordAuthor author = new DiscordAuthor (
                 ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Success.Author" ) ).replaceAll("%player%", p.getName())),
                 Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Success.Profile" ) ).replaceAll("%player%", p.getName()));
         try {
-            DiscordSender.sendEmbed(embed, Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+            DiscordSender.sendEmbed(embed, file.getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
         } catch (Exception exception) {
             exception.printStackTrace ();
         }
@@ -233,14 +263,14 @@ public class EvelynConfiguration {
 
     public void faileddiscord (Player p) {
         DiscordEmbed embed = new DiscordEmbed ()
-                .setTitle(Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.Failed.Title"))
+                .setTitle(file.getString("EvelynResourcePack.Discord-Webhook.Failed.Title"))
                 .setColor( Color.cyan)
                 .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Failed.Description" ) ).replaceAll("%player%", p.getName()));
         DiscordAuthor author = new DiscordAuthor (
                 ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Failed.Author" ) ).replaceAll("%player%", p.getName())),
                 Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Failed.Profile" ) ).replaceAll("%player%", p.getName()));
         try {
-            DiscordSender.sendEmbed(embed, Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+            DiscordSender.sendEmbed(embed, file.getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
         } catch (Exception exception) {
             exception.printStackTrace ();
         }
@@ -248,14 +278,29 @@ public class EvelynConfiguration {
 
     public void declineddiscord (Player p) {
         DiscordEmbed embed = new DiscordEmbed ()
-                .setTitle(Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.Declined.Title"))
+                .setTitle(file.getString("EvelynResourcePack.Discord-Webhook.Declined.Title"))
                 .setColor(Color.cyan)
                 .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Declined.Description" ) ).replaceAll("%player%", p.getName()));
         DiscordAuthor author = new DiscordAuthor (
                 ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Declined.Author" ) ).replaceAll("%player%", p.getName())),
                 Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Declined.Profile" ) ).replaceAll("%player%", p.getName()));
         try {
-            DiscordSender.sendEmbed(embed, Main.getPlugins().getConfig().getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+            DiscordSender.sendEmbed(embed, file.getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
+        } catch (Exception exception) {
+            exception.printStackTrace ();
+        }
+    }
+
+    public void bypassdiscord (Player p) {
+        DiscordEmbed embed = new DiscordEmbed ()
+                .setTitle(file.getString("EvelynResourcePack.Discord-Webhook.Bypass.Title"))
+                .setColor(Color.cyan)
+                .setDescription( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Bypass.Description" ) ).replaceAll("%player%", p.getName()));
+        DiscordAuthor author = new DiscordAuthor (
+                ChatColor.stripColor( Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Bypass.Author" ) ).replaceAll("%player%", p.getName())),
+                Objects.requireNonNull ( Main.getPlugins ().getConfig ().getString ( "EvelynResourcePack.Discord-Webhook.Bypass.Profile" ) ).replaceAll("%player%", p.getName()));
+        try {
+            DiscordSender.sendEmbed(embed, file.getString("EvelynResourcePack.Discord-Webhook.URL-Link"), author);
         } catch (Exception exception) {
             exception.printStackTrace ();
         }
