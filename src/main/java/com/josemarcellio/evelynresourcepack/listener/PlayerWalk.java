@@ -20,10 +20,10 @@ public class PlayerWalk implements Listener {
     }
 
     @EventHandler
-    public void walk(PlayerMoveEvent e) {
+    public void walk(final PlayerMoveEvent e) {
         if (!EvelynHandler.lockplayer ( e.getPlayer () )) {
-            Player p = e.getPlayer();
-            Location to = e.getTo();
+            final Player p = e.getPlayer();
+            final Location to = e.getTo();
             final FileConfiguration file = Main.getPlugins ().getConfig ();
             if (file.getBoolean ( "EvelynResourcePack.Lock.Join.Enable" )) {
                 if (to != null && e.getFrom().getY() > to.getY()) return;

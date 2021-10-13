@@ -17,13 +17,13 @@ public class OpeNLoginListener implements Listener {
     }
 
     @EventHandler
-    public void onlogin(AsyncLoginEvent e) {
-        Player p = e.getPlayer();
+    public void onlogin(final AsyncLoginEvent e) {
+        final Player p = e.getPlayer();
         new EvelynConfiguration().joinbypass(p);
     }
     @EventHandler
-    public void onregister(AsyncRegisterEvent e) {
-        Player p = e.getPlayer();
+    public void onregister(final AsyncRegisterEvent e) {
+        final Player p = e.getPlayer();
         new EvelynConfiguration().joinbypass(p);
     }
 }
