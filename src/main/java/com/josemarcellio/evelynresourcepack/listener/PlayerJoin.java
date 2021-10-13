@@ -18,6 +18,6 @@ public class PlayerJoin implements Listener {
     @EventHandler
     public void join(final PlayerJoinEvent e) {
         final Player p = e.getPlayer ();
-        new EvelynConfiguration(this.plugin).joinbypass(p);
+        new EvelynConfiguration().joinbypass(p);
     }
 }

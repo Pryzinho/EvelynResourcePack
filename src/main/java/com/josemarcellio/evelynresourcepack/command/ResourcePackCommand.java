@@ -18,7 +18,7 @@ public class ResourcePackCommand implements CommandExecutor
     public boolean onCommand(final @NotNull CommandSender sender, final @NotNull Command command, final @NotNull String label, final String[] args) {
         if (sender instanceof Player) {
             final Player p = (Player)sender;
-            new EvelynConfiguration(this.plugin).send(p);
+            new EvelynConfiguration().send(p);
         }
         return false;
     }

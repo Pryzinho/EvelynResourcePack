@@ -14,12 +14,6 @@ import java.util.Optional;
 
 public class EvelynConfiguration {
 
-    public Main plugin;
-
-    public EvelynConfiguration(Main instance) {
-        this.plugin = instance;
-    }
-
     final FileConfiguration file = Main.getPlugins().getConfig();
     List<String> accepts = file.getStringList ( "EvelynResourcePack.Messages.Accept.Messages" );
     List<String> successs = file.getStringList ( "EvelynResourcePack.Messages.Success.Messages" );
@@ -74,7 +68,7 @@ public class EvelynConfiguration {
     }
 
     public void bypass(Player p) {
-        Bukkit.getScheduler().runTaskLater(this.plugin, () -> {
+        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
             bypassmessage ( p );
             bypassdiscord ( p );
             bypasssound ( p );
@@ -104,7 +98,7 @@ public class EvelynConfiguration {
     }
 
     public void acceptdelay(Player p) {
-        Bukkit.getScheduler().runTaskLater(this.plugin, () -> {
+        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
             accept ( p );
             accepttitle ( p );
             acceptsound ( p );
@@ -114,7 +108,7 @@ public class EvelynConfiguration {
     }
 
     public void successdelay(Player p) {
-        Bukkit.getScheduler().runTaskLater(this.plugin, () -> {
+        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
             success ( p );
             successtitle ( p );
             successsound ( p );

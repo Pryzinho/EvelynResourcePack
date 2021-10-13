@@ -19,11 +19,11 @@ public class OpeNLoginListener implements Listener {
     @EventHandler
     public void onlogin(AsyncLoginEvent e) {
         Player p = e.getPlayer();
-        new EvelynConfiguration(this.plugin).joinbypass(p);
+        new EvelynConfiguration().joinbypass(p);
     }
     @EventHandler
     public void onregister(AsyncRegisterEvent e) {
         Player p = e.getPlayer();
-        new EvelynConfiguration(this.plugin).joinbypass(p);
+        new EvelynConfiguration().joinbypass(p);
     }
 }

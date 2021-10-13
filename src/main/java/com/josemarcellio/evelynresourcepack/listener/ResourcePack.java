@@ -24,25 +24,25 @@ public class ResourcePack implements Listener {
         final FileConfiguration file = Main.getPlugins().getConfig();
         final Player p = e.getPlayer();
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.ACCEPTED)) {
-                new EvelynConfiguration ( this.plugin ).acceptdelay ( p );
+            new EvelynConfiguration ().acceptdelay ( p );
             if (file.getBoolean ( "EvelynResourcePack.Unlock.Accept.Enable" )) {
                 ResourcePack.this.evelyn.unlockplayer(p);
             }
         }
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED)) {
-            new EvelynConfiguration(this.plugin).successdelay (p);
+            new EvelynConfiguration().successdelay (p);
             if (file.getBoolean ( "EvelynResourcePack.Unlock.Success.Enable" )) {
                 ResourcePack.this.evelyn.unlockplayer(p);
             }
         }
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.DECLINED)) {
-            new EvelynConfiguration(this.plugin).declineddelay (p);
+            new EvelynConfiguration().declineddelay (p);
             if (file.getBoolean ( "EvelynResourcePack.Unlock.Declined.Enable" )) {
                 ResourcePack.this.evelyn.unlockplayer(p);
             }
         }
         if (e.getStatus().equals(PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD)) {
-            new EvelynConfiguration(this.plugin).faileddelay (p);
+            new EvelynConfiguration().faileddelay (p);
             if (file.getBoolean ( "EvelynResourcePack.Unlock.Failed.Enable" )) {
                 ResourcePack.this.evelyn.unlockplayer(p);
             }
