@@ -13,12 +13,20 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class EvelynConfiguration {
+
+    public Main plugin;
+
+    public EvelynConfiguration(Main instance) {
+        this.plugin = instance;
+    }
+
     final FileConfiguration file = Main.getPlugins().getConfig();
     List<String> accepts = file.getStringList ( "EvelynResourcePack.Messages.Accept.Messages" );
     List<String> successs = file.getStringList ( "EvelynResourcePack.Messages.Success.Messages" );
     List<String> declineds = file.getStringList ( "EvelynResourcePack.Messages.Declined.Messages" );
     List<String> faileds = file.getStringList ( "EvelynResourcePack.Messages.Failed.Messages" );
     List<String> bypasss = file.getStringList ( "EvelynResourcePack.Messages.Bypass.Messages" );
+
 
     public void send(Player p) {
         p.setResourcePack ( Objects.requireNonNull ( file.getString ( "EvelynResourcePack.URL-Link" ) ) );
@@ -66,12 +74,12 @@ public class EvelynConfiguration {
     }
 
     public void bypass(Player p) {
-        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
-        bypassmessage ( p );
-        bypassdiscord ( p );
-        bypasssound ( p );
-        bypasstitle ( p );
-        bypassbar ( p );
+        Bukkit.getScheduler().runTaskLater(this.plugin, () -> {
+            bypassmessage ( p );
+            bypassdiscord ( p );
+            bypasssound ( p );
+            bypasstitle ( p );
+            bypassbar ( p );
         }, 20L * file.getInt ( "EvelynResourcePack.Delay" ));
     }
 
@@ -96,7 +104,7 @@ public class EvelynConfiguration {
     }
 
     public void acceptdelay(Player p) {
-        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
+        Bukkit.getScheduler().runTaskLater(this.plugin, () -> {
             accept ( p );
             accepttitle ( p );
             acceptsound ( p );
@@ -106,7 +114,7 @@ public class EvelynConfiguration {
     }
 
     public void successdelay(Player p) {
-        Bukkit.getScheduler().runTaskLater(Main.getPlugins(), () -> {
+        Bukkit.getScheduler().runTaskLater(this.plugin, () -> {
             success ( p );
             successtitle ( p );
             successsound ( p );

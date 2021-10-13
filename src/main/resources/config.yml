@@ -11,6 +11,20 @@ EvelynResourcePack:
   Delay: 1 #second
   URL-Link: "your-resourcepack-url"
 
+  Lock:
+    Join:
+      Enable: true
+
+  Unlock:
+    Accept:
+      Enable: false
+    Success:
+      Enable: true
+    Failed:
+      Enable: false
+    Declined:
+      Enable: false
+
   Discord-Webhook:
     URL-Link: "your-discord-webhook-url"
     Bypass:
