@@ -17,7 +17,7 @@ public class PlayerQuit implements Listener {
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent e) {
+    public void quit(PlayerQuitEvent e) {
         if (EvelynHandler.lockplayer ( e.getPlayer () )) {
             this.evelyn.removelock ( e.getPlayer () );
         }

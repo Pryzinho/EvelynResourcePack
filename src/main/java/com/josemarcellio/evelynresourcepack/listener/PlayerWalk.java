@@ -4,11 +4,10 @@ import com.josemarcellio.evelynresourcepack.Main;
 import com.josemarcellio.evelynresourcepack.handler.EvelynHandler;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-
-import java.util.Objects;
 
 public class PlayerWalk implements Listener {
 
@@ -21,11 +20,15 @@ public class PlayerWalk implements Listener {
     }
 
     @EventHandler
-    public void onWalk(PlayerMoveEvent e) {
+    public void walk(PlayerMoveEvent e) {
         if (!EvelynHandler.lockplayer ( e.getPlayer () )) {
+            Player p = e.getPlayer();
+            Location to = e.getTo();
             final FileConfiguration file = Main.getPlugins ().getConfig ();
             if (file.getBoolean ( "EvelynResourcePack.Lock.Join.Enable" )) {
-                e.setTo ( new Location ( e.getPlayer ().getWorld (), e.getFrom ().getX (), Objects.requireNonNull ( e.getTo () ).getY (), e.getFrom ().getZ (), e.getTo ().getYaw (), e.getTo ().getPitch () ) );
+                if (to != null && e.getFrom().getY() > to.getY()) return;
+                p.teleport(e.getFrom());
+                e.setCancelled(true);
             }
         }
     }
