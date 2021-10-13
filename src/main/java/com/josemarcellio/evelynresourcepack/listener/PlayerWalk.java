@@ -11,14 +11,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class PlayerWalk implements Listener {
 
-    public Main plugin;
-    public EvelynHandler evelyn;
-
-    public PlayerWalk(Main instance, EvelynHandler evelyn) {
-        this.plugin = instance;
-        this.evelyn = evelyn;
-    }
-
     @EventHandler
     public void walk(final PlayerMoveEvent e) {
         if (!EvelynHandler.lockplayer ( e.getPlayer () )) {

@@ -11,11 +11,9 @@ import org.bukkit.event.player.PlayerResourcePackStatusEvent;
 
 public class ResourcePack implements Listener {
 
-    public Main plugin;
     public EvelynHandler evelyn;
 
-    public ResourcePack(Main instance, EvelynHandler evelyn) {
-        this.plugin = instance;
+    public ResourcePack(EvelynHandler evelyn) {
         this.evelyn = evelyn;
     }
 
