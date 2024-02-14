@@ -1,8 +1,8 @@
 # EvelynResourcePack - ResourcePack Downloader
 Updated by Pry
 
-Original project:
-[![Github](https://github.com/nickuc/EvelynResourcePack)
+Original project:<br>
+https://github.com/nickuc/EvelynResourcePack
 [![Spigot](https://img.shields.io/spiget/downloads/96687)](https://www.spigotmc.org/resources/✨-evelyn-resourcepack-downloader-✨-authme-nlogin-openlogin-discord-webhook-support.96687/)
 
 
